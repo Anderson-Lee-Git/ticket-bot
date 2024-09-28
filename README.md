@@ -22,7 +22,11 @@ cd [path to directory]
   ```
   cd ~/Desktop/ticket-bot
   ```
-3. In the repository directory, on the terminal with a different window from 1., run this command
+3. Make sure the repository is up-to-date
+```
+git pull
+```
+4. In the repository directory, on the terminal with a different window from 1., run this command
 ```
 python3 bot.py --url 
 ```
