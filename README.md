@@ -21,7 +21,6 @@ cd [path to directory]
 * Note: Replace the `[]` as well
 3. In the repository directory, on the terminal with a different window from 1., run this command
 ```
-python3 bot.py --url [concert page URL]
+python3 bot.py --url 
 ```
 * Note: If you'd like to run 2. again, just keep the terminal window on 1. open. You don't have to run 1. again.
-* Note: Replace the bracket as well
