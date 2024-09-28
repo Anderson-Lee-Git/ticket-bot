@@ -5,8 +5,10 @@ if ! command -v brew &> /dev/null
 then
     echo "Homebrew not found. Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-else
-    echo "Homebrew is already installed."
+    
+    # Adding Homebrew to PATH for the current session
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Step 2: Install Python 3 using Homebrew
@@ -18,7 +20,7 @@ else
     echo "Python 3 is already installed."
 fi
 
-# Step 3: Upgrade pip (optional but recommended)
+# Step 3: Upgrade pip
 echo "Upgrading pip..."
 python3 -m pip install --upgrade pip
 
@@ -26,11 +28,11 @@ python3 -m pip install --upgrade pip
 echo "Installing Selenium..."
 python3 -m pip install selenium
 
-# Step 5: Install webdriver-manager (optional but recommended for managing browser drivers)
+# Step 5: Install webdriver-manager
 echo "Installing webdriver-manager..."
 python3 -m pip install webdriver-manager
 
-# Step 6: Check if Git is installed, if not, install Git
+# Step 6: Install Git using Homebrew
 if ! command -v git &> /dev/null
 then
     echo "Git not found. Installing Git..."
