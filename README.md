@@ -19,15 +19,15 @@ cd [path to directory]
 ```
 * Note: You could drag and drop the directory on Finder or Desktop to the terminal after typing `cd `.
 * Note: Example command
-```
-cd ~/Desktop/ticket-bot
-```
+  ```
+  cd ~/Desktop/ticket-bot
+  ```
 3. In the repository directory, on the terminal with a different window from 1., run this command
 ```
 python3 bot.py --url 
 ```
 * Note: Add the event url at the end of the command like the following example
-```
-python3 bot.py --url https://tixcraft.com/activity/detail/24_dualipa
-```
+  ```
+  python3 bot.py --url https://tixcraft.com/activity/detail/24_dualipa
+  ```
 * Note: If you'd like to run 2. again, just keep the terminal window on 1. open. You don't have to run 1. again.
