@@ -8,12 +8,14 @@ git clone https://github.com/Anderson-Lee-Git/ticket-bot.git
 ```
 brew install --cask chromedriver
 ```
-3. Start Chrome with remote debugging enabled
+## Run
+1. Start Chrome with remote debugging enabled. On the terminal, run this command
 ```
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --user-data-dir="/tmp/chrome_debug_profile"
 ```
-## Run
-1. In the repository directory, run this command
+2. In the repository directory, on the terminal with a different window from 1., run this command
 ```
 python3 bot.py --url [concert page URL]
 ```
+
+* Note: If you'd like to run 2. again, just keep the terminal window on 1. open. You don't have to run 1. again.
