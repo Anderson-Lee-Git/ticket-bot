@@ -1,3 +1,5 @@
 numpy
 selenium
 pytorch
+torchvision
+transformers
