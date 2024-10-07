@@ -84,9 +84,14 @@ if __name__ == "__main__":
     # url = "https://tixcraft.com/activity/detail/24_yugyeom"
     # url = "https://tixcraft.com/activity/detail/24_tkl"
     # url = "https://tixcraft.com/activity/detail/24_dualipa"
+    print("Waiting for the target time (2024-10-11 12:00:00)...")
+    itr = 0
+    log_interval = 5000
     while True:
         # Get the current time
         current_time = datetime.now()
+        if itr % log_interval == (log_interval - 1):
+            print("Still waiting...")
         # Check if the current time is greater than or equal to the target time
         if current_time >= target_time:
             start = datetime.now()
@@ -97,3 +102,4 @@ if __name__ == "__main__":
             print(end - start)
             break
         time.sleep(0.001)
+        itr += 1
