@@ -80,7 +80,7 @@ if __name__ == "__main__":
     parser.add_argument("--url", type=str, help="The url of the event")
     args = parser.parse_args()
     # TODO: target time
-    target_time = datetime(2024, 9, 28, 16, 49, 0)
+    target_time = datetime(2024, 10, 11, 12, 0, 0)
     # url = "https://tixcraft.com/activity/detail/24_yugyeom"
     # url = "https://tixcraft.com/activity/detail/24_tkl"
     # url = "https://tixcraft.com/activity/detail/24_dualipa"
