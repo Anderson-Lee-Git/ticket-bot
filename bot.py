@@ -26,6 +26,7 @@ def main(url):
     # find ticket button
     robust_find_ticket_button_xpath = """
         /html/body/div[2]/div[1]/section[2]/div/div[2]/div[2]/table/tbody/tr/td[4]/button |
+        /html/body/div[2]/div[1]/section[2]/div/div[2]/div[2]/table/tbody/tr[1]/td[4]/button |
         /html/body/div[2]/div[1]/section[2]/div/div[2]/div[2]/table/tbody/tr[2]/td[4]/button
     """
     find_ticket_button = WebDriverWait(driver, 600, 0.2).until(
