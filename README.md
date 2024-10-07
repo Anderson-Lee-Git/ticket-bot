@@ -15,13 +15,8 @@ brew install --cask chromedriver
 ```
 2. Open a new terminal window and enter into the repository directory
 ```
-cd [path to directory]
+cd ~/Desktop/ticket-bot
 ```
-* Note: You could drag and drop the directory on Finder or Desktop to the terminal after typing `cd `.
-* Note: Example command
-  ```
-  cd ~/Desktop/ticket-bot
-  ```
 3. Make sure the repository is up-to-date
 ```
 git pull
