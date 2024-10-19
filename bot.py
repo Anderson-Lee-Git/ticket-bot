@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 def log(msg):
-    default_log(INFO, f"[{datetime.now()}] {msg}")
+    default_log(INFO, f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
 
 
 def main(url):
