@@ -1,6 +1,7 @@
 import argparse
 from logging import log as default_log
 from logging import INFO
+import logging
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -10,6 +11,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from datetime import datetime
 import time
+
+logging.basicConfig(level=logging.INFO)
 
 
 def log(msg):
@@ -34,7 +37,6 @@ def main(url):
     # find ticket button
     robust_find_ticket_button_xpath = """
         /html/body/div[2]/div[1]/section[2]/div/div[2]/div[2]/table/tbody/tr/td[4]/button |
-        /html/body/div[2]/div[1]/section[2]/div/div[2]/div[2]/table/tbody/tr[1]/td[4]/button |
         /html/body/div[2]/div[1]/section[2]/div/div[2]/div[2]/table/tbody/tr[2]/td[4]/button
     """
     log("Waiting for the find ticket button to appear...")
@@ -53,12 +55,12 @@ def main(url):
     available_tickets_xpath = "//div[@class='zone area-list']//ul/li/a[font[@color='#FF0000']]"
     available_tickets = driver.find_elements(By.XPATH, available_tickets_xpath)
     if available_tickets:
-        print("see available tickets")
+        log("see available tickets")
         # Click the first available ticket
         first_available = available_tickets[0]
         driver.execute_script("arguments[0].click();", first_available)
     else:
-        print("no available tickets")
+        log("no available tickets")
         exit()
 
     # Select the maximum number of tickets available
@@ -91,11 +93,11 @@ if __name__ == "__main__":
     parser.add_argument("--url", type=str, help="The url of the event")
     args = parser.parse_args()
     # TODO: target time
-    target_time = datetime(2024, 10, 11, 12, 0, 0)
+    target_time = datetime(2024, 10, 23, 12, 0, 0)
     # url = "https://tixcraft.com/activity/detail/24_yugyeom"
     # url = "https://tixcraft.com/activity/detail/24_tkl"
     # url = "https://tixcraft.com/activity/detail/24_dualipa"
-    log("Waiting for the target time (2024-10-11 12:00:00)...")
+    log("Waiting for the target time (2024-10-23 12:00:00)...")
     itr = 0
     log_interval = 5000
     while True:
