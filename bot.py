@@ -1,4 +1,6 @@
 import argparse
+from logging import log as default_log
+from logging import INFO
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -10,6 +12,10 @@ from datetime import datetime
 import time
 
 
+def log(msg):
+    default_log(INFO, f"[{datetime.now()}] {msg}")
+
+
 def main(url):
     chrome_options = Options()
     chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
@@ -18,10 +24,12 @@ def main(url):
     driver.get(url)
 
     # expand buy ticket button
+    log("Waiting for the buy ticket button to appear...")
     expand_buy_ticket_element = WebDriverWait(driver, 600, 0.2).until(
         EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[1]/section[2]/div/div[1]/div/ul/li[1]/a"))
     )
     driver.execute_script("arguments[0].click();", expand_buy_ticket_element)
+    log("Clicked buy ticket button")
 
     # find ticket button
     robust_find_ticket_button_xpath = """
@@ -29,10 +37,12 @@ def main(url):
         /html/body/div[2]/div[1]/section[2]/div/div[2]/div[2]/table/tbody/tr[1]/td[4]/button |
         /html/body/div[2]/div[1]/section[2]/div/div[2]/div[2]/table/tbody/tr[2]/td[4]/button
     """
+    log("Waiting for the find ticket button to appear...")
     find_ticket_button = WebDriverWait(driver, 600, 0.2).until(
         EC.element_to_be_clickable((By.XPATH, robust_find_ticket_button_xpath))
     )
     driver.execute_script("arguments[0].click();", find_ticket_button)
+    log("Clicked find ticket button")
 
     # select first available seat
     # make sure zone area list exists
@@ -85,22 +95,22 @@ if __name__ == "__main__":
     # url = "https://tixcraft.com/activity/detail/24_yugyeom"
     # url = "https://tixcraft.com/activity/detail/24_tkl"
     # url = "https://tixcraft.com/activity/detail/24_dualipa"
-    print("Waiting for the target time (2024-10-11 12:00:00)...")
+    log("Waiting for the target time (2024-10-11 12:00:00)...")
     itr = 0
     log_interval = 5000
     while True:
         # Get the current time
         current_time = datetime.now()
         if itr % log_interval == (log_interval - 1):
-            print("Still waiting...")
+            log("Still waiting...")
         # Check if the current time is greater than or equal to the target time
         if current_time >= target_time:
             start = datetime.now()
             main(args.url)
             end = datetime.now()
-            print(start)
-            print(end)
-            print(end - start)
+            log(f"Start time {start}")
+            log(f"End time {end}")
+            log(f"Time delta: {end - start}")
             break
         time.sleep(0.001)
         itr += 1
